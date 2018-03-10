@@ -342,7 +342,7 @@ class Gishatich {
         var cord = random(emptyCord);
 
         if (cord) {
-         
+
             this.multiply++;
 
             var x = cord[0];
@@ -480,8 +480,8 @@ class Gishatich {
 
 
 
-class Gishatichispanox{
-     constructor(x, y, ind) {
+class Gishatichispanox {
+    constructor(x, y, ind) {
         this.index = ind;
         this.x = x;
         this.y = y;
@@ -518,7 +518,7 @@ class Gishatichispanox{
         return found;
     }
 
-    killGishatich(){
+    killGishatich() {
         var emptyCord = this.getDirections(3);
 
         var cord = random(emptyCord);
@@ -536,14 +536,14 @@ class Gishatichispanox{
                 }
             }
 
-        }       
+        }
     }
 
 
 }
 
-class Eatgrassenergyhanox{
-     constructor(x, y, ind) {
+class Eatgrassenergyhanox {
+    constructor(x, y, ind) {
         this.index = ind;
         this.x = x;
         this.y = y;
@@ -580,7 +580,7 @@ class Eatgrassenergyhanox{
         return found;
     }
 
-    energyhanel(){
+    energyhanel() {
         var emptyCord = this.getDirections(2);
 
         var cord = random(emptyCord);
@@ -588,16 +588,16 @@ class Eatgrassenergyhanox{
         if (cord) {
             var x = cord[0];
             var y = cord[1];
-            
+
             matrix[y][x] = 0;
-                    
+
             for (var i in eatArr) {
                 if (x == eatArr[i].x && y == eatArr[i].y) {
                     eatArr.splice(i, 1);
                 }
             }
 
-        }       
+        }
     }
 
 
