@@ -7,7 +7,7 @@ var gishatichspanoxArr = [];
 var eatgrassedandaxacnoxArr = [];
 var bardz = 100;
 var layn = 100;
-var grassCount = 200;
+var grassCount= 200;
 var eatGrassCount = 100;
 var gishatichCount = 200;
 var gishatichspanoxCount = 300;
@@ -16,57 +16,57 @@ var eatgrassdandaxacnoxCount = 100;
 
 
 function setup() {
-    for (var i = 0; i < bardz; i++) {
-        matrix.push([]);
-        for (var j = 0; j < layn; j++) {
-            matrix[i][j] = 0;
-        }
-    }
-    var c = 0;
-    while (c < grassCount) {
-        var x = Math.floor(random(0, layn));
-        var y = Math.floor(random(0, bardz));
-        if (matrix[x][y] == 0) {
-            matrix[x][y] = 1;
-            c++;
-        }
-    }
-    var c = 0;
-    while (c < eatGrassCount) {
-        var x = Math.floor(random(0, layn));
-        var y = Math.floor(random(0, bardz));
-        if (matrix[x][y] == 0) {
-            matrix[x][y] = 2;
-            c++;
-        }
-    }
-    var c = 0;
-    while (c < gishatichCount) {
-        var x = Math.floor(random(0, layn));
-        var y = Math.floor(random(0, bardz));
-        if (matrix[x][y] == 0) {
-            matrix[x][y] = 3;
-            c++;
-        }
-    }
-    var c = 0;
-    while (c < gishatichspanoxCount) {
-        var x = Math.floor(random(0, layn));
-        var y = Math.floor(random(0, bardz));
-        if (matrix[x][y] == 0) {
-            matrix[x][y] = 4;
-            c++;
-        }
-    }
-    var c = 0;
-    while (c < eatgrassdandaxacnoxCount) {
-        var x = Math.floor(random(0, layn));
-        var y = Math.floor(random(0, bardz));
-        if (matrix[x][y] == 0) {
-            matrix[x][y] = 5;
-            c++;
-        }
-    }
+	for (var i= 0; i<bardz; i++){
+		matrix.push([]);
+		for (var j = 0; j< layn; j++){
+			matrix[i][j] = 0;
+		}
+	}
+	var c = 0;
+	while (c<grassCount) {
+		var x = Math.floor(random(0, layn));
+		var y = Math.floor(random(0, bardz));
+		if (matrix[x][y]==0) {
+			matrix[x][y] = 1;
+			c++;
+		}
+	}
+	var c = 0;
+	while (c<eatGrassCount) {
+		var x = Math.floor(random(0, layn));
+		var y = Math.floor(random(0, bardz));
+		if (matrix[x][y]==0) {
+			matrix[x][y] = 2;
+			c++;
+		}
+	}
+	var c = 0;
+	while (c<gishatichCount) {
+		var x = Math.floor(random(0, layn));
+		var y = Math.floor(random(0, bardz));
+		if (matrix[x][y]==0) {
+			matrix[x][y] = 3;
+			c++;
+		}
+	}
+	var c = 0;
+	while (c<gishatichspanoxCount) {
+		var x = Math.floor(random(0, layn));
+		var y = Math.floor(random(0, bardz));
+		if (matrix[x][y]==0) {
+			matrix[x][y] = 4;
+			c++;
+		}
+	}
+	var c = 0;
+	while (c<eatgrassdandaxacnoxCount) {
+		var x = Math.floor(random(0, layn));
+		var y = Math.floor(random(0, bardz));
+		if (matrix[x][y]==0) {
+			matrix[x][y] = 5;
+			c++;
+		}
+	}
     noStroke()
     frameRate(60);
     createCanvas(matrix[0].length * side, matrix.length * side);
@@ -78,7 +78,7 @@ function setup() {
             if (matrix[i][j] == 2) {
                 var eatgrass = new Eatgrass(j, i, 2);
                 eatArr.push(eatgrass);
-            }
+            } 
             else if (matrix[i][j] == 1) {
                 var grass = new Grass(j, i, 1);
                 xotArr.push(grass);
@@ -90,15 +90,15 @@ function setup() {
             else if (matrix[i][j] == 4) {
                 var gishatichspanox = new Gishatichispanox(j, i, 4)
                 gishatichspanoxArr.push(gishatichspanox);
-            }
+            } 
             else if (matrix[i][j] == 5) {
                 var eatspanox = new Eatgrassenergyhanox(j, i, 5)
                 eatgrassedandaxacnoxArr.push(eatspanox);
-            }
-
+            }  
+            
+        }
         }
     }
-}
 
 
 
@@ -118,18 +118,18 @@ function draw() {
             } else if (matrix[i][j] == 0) {
                 fill('#acacac');
                 rect(j * side, i * side, side, side);
-            } else if (matrix[i][j] == 4) {
+            }else if (matrix[i][j] == 4) {
                 fill("black");
                 rect(j * side, i * side, side, side);
             } else if (matrix[i][j] == 5) {
                 fill("blue");
                 rect(j * side, i * side, side, side);
-            }
+            } 
         }
     }
 
 
-    for (var i in xotArr) {
+  for (var i in xotArr) {
         xotArr[i].mul();
     }
 
@@ -149,7 +149,7 @@ function draw() {
 
 
 
-
+  
 
 /*
 var bardz = 30;
