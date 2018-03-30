@@ -1,87 +1,87 @@
 var matrix = []
 var side = 40;
-var mardArr = [];
-var xotArr = [];
-var eatArr = [];
-var gishatichArr = [];
-var gishatichspanoxArr = [];
-var eatgrassedandaxacnoxArr = [];
-var bardz = 100;
-var layn = 100;
-var mardCount = 100;
-var grassCount= 600;
-var eatGrassCount = 100;
-var gishatichCount = 200;
-var gishatichspanoxCount = 300;
-var eatgrassdandaxacnoxCount = 100;
-var a = [1, 2, 3];
-var eghanakitesak;
+var humanArr = [];
+var grassArr = [];
+var vegetarianArr = [];
+var predatorArr = [];
+var antipredatorArr = [];
+var stoneArr = [];
+var heigh = 60;
+var length = 60;
+var humanCount = 100;
+var grassCount = 600;
+var vegetarianCount = 100;
+var predatorCount = 200;
+var antipredatorCount = 20;
+var stoneCount = 50;
+var number = [1, 2, 3];
+var weathertype;
 
 
 function setup() {
-    eghanakitesak = document.getElementById("Eghanakitesak");
-	for (var i= 0; i<bardz; i++){
-		matrix.push([]);
-		for (var j = 0; j< layn; j++){
-			matrix[i][j] = 0;
-		}
-	}
-	var c = 0;
-	while (c<grassCount) {
-		var x = Math.floor(random(0, layn));
-		var y = Math.floor(random(0, bardz));
-		if (matrix[x][y]==0) {
-			matrix[x][y] = 1;
-			c++;
-		}
-	}
-	var c = 0;
-	while (c<eatGrassCount) {
-		var x = Math.floor(random(0, layn));
-		var y = Math.floor(random(0, bardz));
-		if (matrix[x][y]==0) {
-			matrix[x][y] = 2;
-			c++;
-		}
-	}
-	var c = 0;
-	while (c<gishatichCount) {
-		var x = Math.floor(random(0, layn));
-		var y = Math.floor(random(0, bardz));
-		if (matrix[x][y]==0) {
-			matrix[x][y] = 3;
-			c++;
-		}
-	}
-	var c = 0;
-	while (c<gishatichspanoxCount) {
-		var x = Math.floor(random(0, layn));
-		var y = Math.floor(random(0, bardz));
-		if (matrix[x][y]==0) {
-			matrix[x][y] = 4;
-			c++;
-		}
-	}
+    weathertype = document.getElementById("WheatherType");
+    for (var i = 0; i < heigh; i++) {
+        matrix.push([]);
+        for (var j = 0; j < length; j++) {
+            matrix[i][j] = 0;
+        }
+    }
     var c = 0;
-	while (c<mardCount) {
-		var x = Math.floor(random(0, layn));
-		var y = Math.floor(random(0, bardz));
-		if (matrix[x][y]==0) {
-			matrix[x][y] = 6;
-			c++;
-		}
-	}
-	var c = 0;
-	while (c<eatgrassdandaxacnoxCount) {
-		var x = Math.floor(random(0, layn));
-		var y = Math.floor(random(0, bardz));
-		if (matrix[x][y]==0) {
-			matrix[x][y] = 5;
-			c++;
-		}
-	}
+    while (c < grassCount) {
+        var x = Math.floor(random(0, length));
+        var y = Math.floor(random(0, heigh));
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 1;
+            c++;
+        }
+    }
+    var c = 0;
+    while (c < vegetarianCount) {
+        var x = Math.floor(random(0, length));
+        var y = Math.floor(random(0, heigh));
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 2;
+            c++;
+        }
+    }
+    var c = 0;
+    while (c < predatorCount) {
+        var x = Math.floor(random(0, length));
+        var y = Math.floor(random(0, heigh));
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 3;
+            c++;
+        }
+    }
+    var c = 0;
+    while (c < antipredatorCount) {
+        var x = Math.floor(random(0, length));
+        var y = Math.floor(random(0, heigh));
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 4;
+            c++;
+        }
+    }
+    var c = 0;
+    while (c < humanCount) {
+        var x = Math.floor(random(0, length));
+        var y = Math.floor(random(0, heigh));
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 6;
+            c++;
+        }
+    }
+    var c = 0;
+    while (c < stoneCount) {
+        var x = Math.floor(random(0, length));
+        var y = Math.floor(random(0, heigh));
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 5;
+            c++;
+        }
+    }
     noStroke()
-    frameRate(60);
+    frameRate(1);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
 
@@ -89,52 +89,46 @@ function setup() {
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[i].length; j++) {
             if (matrix[i][j] == 2) {
-                var eatgrass = new Eatgrass(j, i, 2);
-                eatArr.push(eatgrass);
-            } 
-            else if (matrix[i][j] == 1) {
+                var vegetarian = new Vegetarian(j, i, 2);
+                vegetarianArr.push(vegetarian);
+            } else if (matrix[i][j] == 1) {
                 var grass = new Grass(j, i, 1);
-                xotArr.push(grass);
-            }
-            else if (matrix[i][j] == 3) {
-                var gishatich = new Gishatich(j, i, 3)
-                gishatichArr.push(gishatich);
-            }
-            else if (matrix[i][j] == 4) {
-                var gishatichspanox = new Gishatichispanox(j, i, 4)
-                gishatichspanoxArr.push(gishatichspanox);
-            } 
-            else if (matrix[i][j] == 5) {
-                var eatspanox = new Eatgrassenergyhanox(j, i, 5)
-                eatgrassedandaxacnoxArr.push(eatspanox);
-            }  
-            else if (matrix[i][j] == 6) {
-                var mard = new Mard(j, i, 6)
-                mardArr.push(mard);
+                grassArr.push(grass);
+            } else if (matrix[i][j] == 3) {
+                var predator = new Predator(j, i, 3)
+                predatorArr.push(predator);
+            } else if (matrix[i][j] == 4) {
+                var antipredator = new AntiPredator(j, i, 4)
+                antipredatorArr.push(antipredator);
+            } else if (matrix[i][j] == 5) {
+                var stone = new Stone(j, i, 5)
+                stoneArr.push(stone);
+            } else if (matrix[i][j] == 6) {
+                var human = new Human(j, i, 6)
+                humanArr.push(human);
             }
         }
     }
 }
-
+//Եթե նորից Error ցույց տա, պետք ա ստուգել։
 function draw() {
-    if (frameCount % 2 == 0 ){
-        var eghanak = random(a);
+    if (frameCount % 5 == 0) {
+        var weather = random(number);
     }
-    
-    
 
-    if (eghanak == 1){
-        var egh = "snow"; 
-        eghanakitesak.innerHTML = egh;
+    if (weather == 1) {
+        var wth = "snow";
+        weathertype.innerHTML = wth;
     }
-    if (eghanak == 2){
-        var egh = "normal";
-        eghanakitesak.innerHTML = egh;
+    if (weather == 2) {
+        var wth = "normal";
+        weathertype.innerHTML = wth;
     }
-    if (eghanak == 3){
-        var egh = "rain";
-        eghanakitesak.innerHTML = egh;
+    if (weather == 3) {
+        var wth = "rain";
+        weathertype.innerHTML = wth;
     }
+
     background('#acacac');
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[i].length; j++) {
@@ -145,67 +139,39 @@ function draw() {
                 fill("orange");
                 rect(j * side, i * side, side, side);
             } else if (matrix[i][j] == 3) {
-                fill("red");
+                fill("black");
                 rect(j * side, i * side, side, side);
             } else if (matrix[i][j] == 0) {
                 fill('#acacac');
                 rect(j * side, i * side, side, side);
-            }else if (matrix[i][j] == 4) {
-                fill("black");
+            } else if (matrix[i][j] == 4) {
+                fill("red");
                 rect(j * side, i * side, side, side);
             } else if (matrix[i][j] == 5) {
                 fill("blue");
                 rect(j * side, i * side, side, side);
-            } else if (matrix[i][j] == 5) {
-                fill('#9ACD32');
+            } else if (matrix[i][j] == 6) {
+                fill("yellow");
                 rect(j * side, i * side, side, side);
-            } 
+            }
         }
     }
 
 
-  for (var i in xotArr) {
-        xotArr[i].mul();
+    for (var i in grassArr) {
+        grassArr[i].mul();
     }
 
-    for (var i in eatArr) {
-        eatArr[i].eat();
+    for (var i in vegetarianArr) {
+        vegetarianArr[i].eat();
     }
-    for (var i in gishatichArr) {
-        gishatichArr[i].eat();
+    for (var i in predatorArr) {
+        predatorArr[i].eat();
     }
-    for (var i in gishatichspanoxArr) {
-        gishatichspanoxArr[i].killGishatich();
+    for (var i in antipredatorArr) {
+        antipredatorArr[i].killPredator();
     }
-    for (var i in eatgrassedandaxacnoxArr) {
-        eatgrassedandaxacnoxArr[i].energyhanel();
-    }
-    for (var i in mardArr) {
-        mardArr[i].eat();
+    for (var i in humanArr) {
+        humanArr[i].eat();
     }
 }
-
-
-
-  
-
-/*
-var bardz = 30;
-var layn = 100;
-var grassCount= 120;
-var eatGrassCount = 10;
-for (var i = 0; i<bardz; i++)
-{
-    matrix.push([]);
-    for (var j = 0; j<layn; j++0{
-        matrix[i].push(0);
-    }
-}
-function setup() {
-    for (var i=0; i,grassCount; i++){
-        var x = Math.floor(random(0, layn));
-        var y = Math.floor(random(0, bardz));
-        matrix[x][y] = 1;
-    }
-}*/
-
