@@ -14,10 +14,12 @@ var eatGrassCount = 100;
 var gishatichCount = 200;
 var gishatichspanoxCount = 300;
 var eatgrassdandaxacnoxCount = 100;
-
+var a = [1, 2, 3];
+var eghanakitesak;
 
 
 function setup() {
+    eghanakitesak = document.getElementById("Eghanakitesak");
 	for (var i= 0; i<bardz; i++){
 		matrix.push([]);
 		for (var j = 0; j< layn; j++){
@@ -114,8 +116,25 @@ function setup() {
     }
 }
 
-
 function draw() {
+    if (frameCount % 2 == 0 ){
+        var eghanak = random(a);
+    }
+    
+    
+
+    if (eghanak == 1){
+        var egh = "snow"; 
+        eghanakitesak.innerHTML = egh;
+    }
+    if (eghanak == 2){
+        var egh = "normal";
+        eghanakitesak.innerHTML = egh;
+    }
+    if (eghanak == 3){
+        var egh = "rain";
+        eghanakitesak.innerHTML = egh;
+    }
     background('#acacac');
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[i].length; j++) {
