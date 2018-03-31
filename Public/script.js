@@ -204,6 +204,7 @@ function draw() {
     //Ունիկալ իրադարձություն. Չմոռամաս փոխես 600, 670-ը:
 
     if (b >= a && a >= b - 1) {
+        alert("OOPS... FLOOD!!!");
         predatorCount = 0;
         predatorArr = [];
         stoneCount = 0;
@@ -222,8 +223,11 @@ function draw() {
                 matrix[y][x] = 7;
             }
         }
-        alert("OOPS... FLOOD!!!")
-        noLoop();
+        
     }
 
+}
+
+if (floodCount >=3000){
+    noLoop(draw);
 }
