@@ -3,9 +3,11 @@ var side = 40;
 var humanArr = [];
 var grassArr = [];
 var vegetarianArr = [];
+var floodArr = [];
 var predatorArr = [];
 var antipredatorArr = [];
 var stoneArr = [];
+var floodCount = 0;
 var heigh = 60;
 var length = 60;
 var humanCount = 100;
@@ -16,10 +18,20 @@ var antipredatorCount = 20;
 var stoneCount = 50;
 var number = [1, 2, 3];
 var weathertype;
+var grassColor = [""];
+var floodColor = ["#1D94B7"]
+var vegetarianColor = ["orange"];
+var predatorColor = ["black"];
+var antipredatorColor = ["red"];
+var humanColor = ["yellow"];
+var stoneColor = ["blue"];
+var backgroundColor = ["#acacac"];
+var characterGander = [1, 2];
+var a = 666;
 
 
 function setup() {
-    weathertype = document.getElementById("WheatherType");
+    weathertype = document.getElementById("WeatherType");
     for (var i = 0; i < heigh; i++) {
         matrix.push([]);
         for (var j = 0; j < length; j++) {
@@ -83,7 +95,7 @@ function setup() {
     noStroke()
     frameRate(1);
     createCanvas(matrix[0].length * side, matrix.length * side);
-    background('#acacac');
+    background(backgroundColor[0]);
 
 
     for (var i = 0; i < matrix.length; i++) {
@@ -106,12 +118,48 @@ function setup() {
             } else if (matrix[i][j] == 6) {
                 var human = new Human(j, i, 6)
                 humanArr.push(human);
+            } else if (matrix[i][j] == 7) {
+                var flood = new Flood(j, i, 7)
+                floodArr.push(flood);
             }
         }
     }
 }
 //Եթե նորից Error ցույց տա, պետք ա ստուգել։
 function draw() {
+    var b = random(660, 670);
+    console.log(b);
+    background(backgroundColor[0]);
+    for (var i = 0; i < matrix.length; i++) {
+        for (var j = 0; j < matrix[i].length; j++) {
+            if (matrix[i][j] == 1) {
+                fill(grassColor[0]);
+                rect(j * side, i * side, side, side);
+            } else if (matrix[i][j] == 2) {
+                fill(vegetarianColor[0]);
+                rect(j * side, i * side, side, side);
+            } else if (matrix[i][j] == 3) {
+                fill(predatorColor[0]);
+                rect(j * side, i * side, side, side);
+            } else if (matrix[i][j] == 0) {
+                fill(backgroundColor[0]);
+                rect(j * side, i * side, side, side);
+            } else if (matrix[i][j] == 4) {
+                fill(antipredatorColor[0]);
+                rect(j * side, i * side, side, side);
+            } else if (matrix[i][j] == 5) {
+                fill(stoneColor[0]);
+                rect(j * side, i * side, side, side);
+            } else if (matrix[i][j] == 6) {
+                fill(humanColor[0]);
+                rect(j * side, i * side, side, side);
+            } else if (matrix[i][j] == 7) {
+                fill(floodColor[0]);
+                rect(j * side, i * side, side, side);
+            }
+        }
+    }
+
     if (frameCount % 5 == 0) {
         var weather = random(number);
     }
@@ -119,42 +167,17 @@ function draw() {
     if (weather == 1) {
         var wth = "snow";
         weathertype.innerHTML = wth;
+        grassColor[0] = "white";
     }
     if (weather == 2) {
         var wth = "normal";
         weathertype.innerHTML = wth;
+        grassColor[0] = "green";
     }
     if (weather == 3) {
         var wth = "rain";
         weathertype.innerHTML = wth;
-    }
-
-    background('#acacac');
-    for (var i = 0; i < matrix.length; i++) {
-        for (var j = 0; j < matrix[i].length; j++) {
-            if (matrix[i][j] == 1) {
-                fill("green");
-                rect(j * side, i * side, side, side);
-            } else if (matrix[i][j] == 2) {
-                fill("orange");
-                rect(j * side, i * side, side, side);
-            } else if (matrix[i][j] == 3) {
-                fill("black");
-                rect(j * side, i * side, side, side);
-            } else if (matrix[i][j] == 0) {
-                fill('#acacac');
-                rect(j * side, i * side, side, side);
-            } else if (matrix[i][j] == 4) {
-                fill("red");
-                rect(j * side, i * side, side, side);
-            } else if (matrix[i][j] == 5) {
-                fill("blue");
-                rect(j * side, i * side, side, side);
-            } else if (matrix[i][j] == 6) {
-                fill("yellow");
-                rect(j * side, i * side, side, side);
-            }
-        }
+        grassColor[0] = '#4E7614';
     }
 
 
@@ -164,14 +187,43 @@ function draw() {
 
     for (var i in vegetarianArr) {
         vegetarianArr[i].eat();
+        vegetarianArr[i].move();
     }
     for (var i in predatorArr) {
         predatorArr[i].eat();
+        predatorArr[i].move();
     }
     for (var i in antipredatorArr) {
         antipredatorArr[i].killPredator();
+        antipredatorArr[i].move();
     }
     for (var i in humanArr) {
         humanArr[i].eat();
+        humanArr[i].move();
     }
+    //Ունիկալ իրադարձություն. Չմոռամաս փոխես 600, 670-ը:
+
+    if (b >= a && a >= b - 1) {
+        predatorCount = 0;
+        predatorArr = [];
+        stoneCount = 0;
+        stoneArr = [];
+        vegetarianCount = 0;
+        vegetarianArr = [];
+        humanCount = 0;
+        humanArr = [];
+        antipredatorArr = 0;
+        antipredatorArr = [];
+        grassCount = 0;
+        grassArr = [];
+        floodCount = 3600;
+        for (var y = 0; y < matrix.length; y++) {
+            for (var x = 0; x < matrix[y].length; x++) {
+                matrix[y][x] = 7;
+            }
+        }
+        alert("OOPS... FLOOD!!!")
+        noLoop();
+    }
+
 }

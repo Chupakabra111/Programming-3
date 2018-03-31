@@ -39,7 +39,6 @@ class AntiPredator {
     move() {
         var emptyCord = this.getDirections(0);
         var cord = random(emptyCord);
-//Հարցնել, թե արդո՞ք պետք է փոխել var y = cord[1]; -ի "1"-ը։
         if (cord) {
             var x = cord[0];
             var y = cord[1];

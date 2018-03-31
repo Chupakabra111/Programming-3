@@ -5,6 +5,8 @@ class Human {
         this.y = y;
         this.energy = 100;
         this.multiply = 0;
+    //Տանը եթե չհասցնես անպայման կանես սեռի ծրագիրը!!!:
+        this.gender = random(0, 1);
     }
 
 
@@ -24,7 +26,6 @@ class Human {
     getDirections(t) {
         this.newDirections();
         var found = [];
-//Հարցնել, թե արդո՞ք պետք է փոխել var y = this.directions[i][1]; -ի "1"-ը։
         for (var i in this.directions) {
             var x = this.directions[i][0];
             var y = this.directions[i][1];
@@ -45,7 +46,6 @@ class Human {
 
             var cord = random(emptyCord);
             if (cord) {
-//Հարցնել, թե արդո՞ք պետք է փոխել var y = cord[1]; -ի "1"-ը։
                 var x = cord[0];
                 var y = cord[1];
 

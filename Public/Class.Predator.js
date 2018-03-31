@@ -84,6 +84,7 @@ class Predator {
             for (var i in vegetarianArr) {
                 if (x == vegetarianArr[i].x && y == vegetarianArr[i].y) {
                     vegetarianArr.splice(i, 1);
+                    break;
                 }
             }
 //հարցնել 90 և 91 տողերին գրված ծրագրի նշանակությունը։
