@@ -41,6 +41,8 @@ class Grass {
     mul() {
         this.multiply++;
         if (this.multiply == 3) {
+            statistics.grassmul++;
+            changeView(statistics);
             var emptyCord = this.getDirections(0);
 
             var cord = random(emptyCord);

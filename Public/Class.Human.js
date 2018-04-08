@@ -42,6 +42,8 @@ class Human {
     mul() {
         this.multiply++;
         if (this.multiply == 50) {
+            statistics.humanmul++;
+            changeView(statistics);
             var emptyCord = this.getDirections(0);
 
             var cord = random(emptyCord);
@@ -110,6 +112,8 @@ class Human {
                     }
                 }
             }
+            statistics.humaneatcount++;
+            changeView(statistics);
 
 
         var emptyCord = this.getDirections(2);
@@ -133,6 +137,9 @@ class Human {
                     }
                 }
             }
+            statistics.humaneatcount++;
+            changeView(statistics);
+
 
         var emptyCord = this.getDirections(3);
         var cord = random(emptyCord);
@@ -154,6 +161,8 @@ class Human {
                     predatorArr.splice(i, 3);
                 }
             }
+            statistics.humaneatcount++;
+            changeView(statistics);
         }
         var emptyCord = this.getDirections(2);
         var cord = random(emptyCord);
@@ -171,10 +180,12 @@ class Human {
             this.y = y;  
                 for (var i in antipredatorArr) {
                     if (x == antipredatorArr[i].x && y == antipredatorArr[i].y) {
-                        antipredatorArr.splice(i, 4);
+                        antipredatorArr.splice(i, 4);   
                     }
                 }
-               }
+                statistics.humaneatcount++;
+                changeView(statistics);
+ }
        
    
 //հարցնել 167, 168 և 169 տողերին գրված ծրագրի նշանակությունը։

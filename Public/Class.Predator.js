@@ -87,6 +87,8 @@ class Predator {
                     break;
                 }
             }
+            statistics.predatoreatcount++;
+            changeView(statistics);
 //հարցնել 90 և 91 տողերին գրված ծրագրի նշանակությունը։
             if (this.multiply == 10) {
                 this.multiply = 0;
@@ -119,6 +121,8 @@ class Predator {
 
             matrix[y][x] = 3;
             this.multiply = 0;
+            statistics.humanmul++;
+            changeView(statistics);
         }
     }
     die() {

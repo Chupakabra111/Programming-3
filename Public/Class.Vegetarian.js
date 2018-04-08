@@ -68,7 +68,8 @@ class Vegetarian {
 
         if (cord) {
             this.multiply++;
-
+            statistics.vegetarianeatcount++;
+            changeView(statistics);
             var x = cord[0];
             var y = cord[1];
 
@@ -103,6 +104,8 @@ class Vegetarian {
 
         var cord = random(emptyCord);
         if (cord) {
+            statistics.vegetarianmul++;
+            changeView(statistics);
             var x = cord[0];
             var y = cord[1];
 

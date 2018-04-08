@@ -28,6 +28,16 @@ var stoneColor = ["blue"];
 var backgroundColor = ["#acacac"];
 var characterGander = [1, 2];
 var a = 666;
+var statistics = {
+    "timestamp": "",
+    "vegetarianeatcount": 0,
+    "predatoreatcount": 0,
+    "humaneatcouny": 0,
+    "grassmyl": 0,
+    "vegetarianmul": 0,
+    "predatormul": 0,
+    "humanmul": 0,
+}
 
 
 function setup() {
@@ -127,7 +137,7 @@ function setup() {
 }
 //Եթե նորից Error ցույց տա, պետք ա ստուգել։
 function draw() {
-    var b = random(660, 670);
+    var b = random(0, 1000);
     console.log(b);
     background(backgroundColor[0]);
     for (var i = 0; i < matrix.length; i++) {
@@ -230,4 +240,21 @@ function draw() {
 
 if (floodCount >=3000){
     noLoop(draw);
+}
+
+function changeView(stat) {
+    var vegetarianeatcount = document.getElementById("vegetarianeatcount");
+    var predatoreatcount = document.getElementById("predatoreatcount");
+    var humaneatcount = document.getElementById("humaneatcount");
+    var grassmul = document.getElementById("grassmul");
+    var vegetarianmul = document.getElementById("vegetarianmul");
+    var predatormul = document.getElementById("predatormul");
+    var humanmul = document.getElementById("humanmul");
+    vegetarianeatcount.innerHTML = stat.vegetarianeatcount;
+    predatoreatcount.innerHTML = stat.predatoreatcount;
+    humaneatcount.innerHTML = stat.humaneatcount;
+    grassmul.innerHTML = stat.grassmul;
+    vegetarianmul.innerHTML = stat.vegetarianmul;
+    predatormul.innerHTML = stat.predatormul;
+    humanmul.innerHTML = stat.humanmul;
 }
